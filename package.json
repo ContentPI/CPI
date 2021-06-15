@@ -22,7 +22,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run lint"
+      "prepush": "npm run lint"
     }
   },
   "author": "Carlos Santana",
