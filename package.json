@@ -18,12 +18,8 @@
     "lint": "eslint . --ext .js,.tsx,.ts",
     "lint:fix": "eslint . --fix --ext .js,.tsx,.ts",
     "test": "jest src",
-    "test:coverage": "jest src --coverage"
-  },
-  "husky": {
-    "hooks": {
-      "prepush": "npm run lint"
-    }
+    "test:coverage": "jest src --coverage",
+    "precommit": "npm run lint"
   },
   "author": "Carlos Santana",
   "license": "MIT",
