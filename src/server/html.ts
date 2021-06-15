@@ -1,5 +1,5 @@
 // Config
-import { publicPath } from '../config'
+import { publicPath } from '~/config'
 
 type HTMLMetaData = {
   title: string

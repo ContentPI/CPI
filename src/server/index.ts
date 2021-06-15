@@ -2,7 +2,7 @@
 import app from './server'
 
 // Config
-import { PORT } from '../config'
+import { PORT } from '~/config'
 
 const server = app.listen(PORT, () => {
   if (module.hot) {

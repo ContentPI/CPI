@@ -12,7 +12,10 @@ const webpackCommonConfig: () => Configuration = () => {
       path: resolve('dist')
     },
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
+      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+      alias: {
+        '~': resolve(__dirname, '../src')
+      }
     },
     optimization: {
       splitChunks: {
