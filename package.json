@@ -19,7 +19,7 @@
     "lint:fix": "eslint . --fix --ext .js,.tsx,.ts",
     "test": "jest src",
     "test:coverage": "jest src --coverage",
-    "precommit": "npm run lint"
+    "prepare": "husky install"
   },
   "author": "Carlos Santana",
   "license": "MIT",
