@@ -25,11 +25,7 @@ app.use(express.static(distDir))
 app.use(express.static(staticDir))
 
 // Routes
-app.get('/login', (req: Request, res: Response) => {
-  res.send('LOGIN PAGE')
-})
-
-app.get('/', (req: Request, res: Response) => {
+app.get('*', (req: Request, res: Response) => {
   res.send(html({ title: 'ContentPI' }))
 })
 

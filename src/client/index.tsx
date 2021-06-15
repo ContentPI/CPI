@@ -1,10 +1,11 @@
 // Dependencies
 import React from 'react'
 import { render } from 'react-dom'
+import App from './pages/App'
 
 // Components
-const App = () => {
-  return <h1>React</h1>
+const Root = () => {
+  return <App />
 }
 
-render(<App />, document.querySelector('#root'))
+render(<Root />, document.querySelector('#root'))
