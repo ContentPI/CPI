@@ -1,12 +1,16 @@
+// Dependencies
+import serialize from 'serialize-javascript'
+
 // Config
 import { publicPath } from '~/config'
 
 type HTMLMetaData = {
   title: string
+  initialState?: any
 }
 
 const html = (options: HTMLMetaData) => {
-  const { title } = options
+  const { title, initialState = {} } = options
 
   return `
     <!DOCTYPE html>
@@ -19,6 +23,10 @@ const html = (options: HTMLMetaData) => {
       </head>
       <body>
         <div id="root"></div>
+
+        <script>
+          window.initialState = ${serialize(initialState)};
+        </script>
       </body>
     </html>
   `

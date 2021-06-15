@@ -15,6 +15,11 @@ const webpackCommonConfig: () => Configuration = () => {
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
       alias: {
         '~': resolve(__dirname, '../src')
+      },
+      fallback: {
+        crypto: require.resolve('crypto-browserify'),
+        buffer: require.resolve('buffer/'),
+        stream: require.resolve('stream-browserify')
       }
     },
     optimization: {
