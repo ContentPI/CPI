@@ -21,7 +21,7 @@
     "test:coverage": "jest src --coverage",
     "prepare": "husky install"
   },
-  "author": "Carlos Santana",
+  "author": "Carlos Santana <CarlosSantanaEngineer@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@contentpi/lib": "^1.0.5",
