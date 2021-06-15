@@ -1,14 +1,12 @@
 // Dependencies
 import { Configuration } from 'webpack'
-import Dotenv from 'dotenv-webpack'
 
-const webpackProdConfig: (arg0: { presets: string[] }) => Configuration = () => {
-  const plugins = [new Dotenv()]
-
-  return {
-    mode: 'production',
-    plugins
+const webpackProdConfig: (args: { presets: string[] }) => Configuration = () => {
+  const webpackConfig: Configuration = {
+    mode: 'production'
   }
+
+  return webpackConfig
 }
 
 export default webpackProdConfig

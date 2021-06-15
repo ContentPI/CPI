@@ -1,7 +1,7 @@
 // Dependencies
 import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
-import path from 'path'
+import { resolve } from 'path'
 
 // Webpack Configuration
 import webpackConfig from '../../webpack.config'
@@ -18,6 +18,7 @@ const devServer: () => void = async () => {
     presets: ['server']
   }
 
+  // Loading client & server configurations
   const serverWebpackConfig = await webpackConfig(serverOptions)
   const clientWebpackConfig = webpack(await webpackConfig(clientOptions))
   let watchServer: any
@@ -35,11 +36,12 @@ const devServer: () => void = async () => {
     })
   }
 
+  // Webpack Dev Server Configuration
   const devServerConfig: WebpackDevServer.Configuration = {
     hot: true,
     port: 3001,
     disableHostCheck: true,
-    contentBase: path.resolve('src', 'static'),
+    contentBase: resolve('src', 'static'),
     headers: {
       'Access-Control-Allow-Origin': '*'
     },
@@ -52,8 +54,8 @@ const devServer: () => void = async () => {
     }
   }
 
+  // Starting a Webpack Dev Server on port 3001
   const server = new WebpackDevServer(clientWebpackConfig, devServerConfig)
-
   server.listen(3001)
 }
 

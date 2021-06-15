@@ -21,10 +21,11 @@ const webpackConfig: (args: ConfigArgs) => Promise<Configuration> = async (
     presets: []
   }
 ) => {
+  const commonConfiguration = webpackCommonConfig()
   const presetsConfiguration = await loadPresets({ mode, presets })
   const modeConfiguration = await modeConfig({ mode, presets })
 
-  return merge(webpackCommonConfig(), modeConfiguration, presetsConfiguration)
+  return merge(commonConfiguration, modeConfiguration, presetsConfiguration)
 }
 
 export default webpackConfig

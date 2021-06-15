@@ -2,14 +2,14 @@
 import { Configuration } from 'webpack'
 import { resolve } from 'path'
 import createStyledComponentsTransformer from 'typescript-plugin-styled-components'
+import Dotenv from 'dotenv-webpack'
 
 const styledComponentsTransformer = createStyledComponentsTransformer()
 
 const webpackCommonConfig: () => Configuration = () => {
   const webpackConfig: Configuration = {
     output: {
-      path: resolve('dist'),
-      publicPath: '/'
+      path: resolve('dist')
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
@@ -44,7 +44,8 @@ const webpackCommonConfig: () => Configuration = () => {
           ]
         }
       ]
-    }
+    },
+    plugins: [new Dotenv()]
   }
 
   return webpackConfig

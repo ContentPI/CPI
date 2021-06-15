@@ -1,8 +1,12 @@
-// Utils
-import { isProduction } from './utils'
+// Config
+import { publicPath } from '../config'
 
-export default function html({ title = 'ContentPI' }) {
-  const path = isProduction ? '' : 'http://localhost:3001/'
+type HTMLMetaData = {
+  title: string
+}
+
+const html = (options: HTMLMetaData) => {
+  const { title } = options
 
   return `
     <!DOCTYPE html>
@@ -10,12 +14,14 @@ export default function html({ title = 'ContentPI' }) {
       <head>
         <meta charset="utf-8">
         <title>${title}</title>
+        <script defer="" src="${publicPath}vendor.js"></script>
+        <script defer="" src="${publicPath}main.js"></script>
       </head>
       <body>
         <div id="root"></div>
-        <script defer="" src="${path}vendor.js"></script>
-        <script defer="" src="${path}main.js"></script>
       </body>
     </html>
   `
 }
+
+export default html

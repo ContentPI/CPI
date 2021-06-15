@@ -1,7 +1,8 @@
 // Server App
 import app from './server'
 
-const PORT = process.env.PORT || 3000
+// Config
+import { PORT } from '../config'
 
 const server = app.listen(PORT, () => {
   if (module.hot) {

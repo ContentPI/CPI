@@ -1,6 +1,5 @@
 // Dependencies
 import { Configuration, HotModuleReplacementPlugin, NoEmitOnErrorsPlugin } from 'webpack'
-import Dotenv from 'dotenv-webpack'
 
 const webpackDevConfig: () => Configuration = () => {
   const webpackConfig: Configuration = {
@@ -9,7 +8,7 @@ const webpackDevConfig: () => Configuration = () => {
     output: {
       filename: '[name].js'
     },
-    plugins: [new Dotenv(), new HotModuleReplacementPlugin(), new NoEmitOnErrorsPlugin()]
+    plugins: [new HotModuleReplacementPlugin(), new NoEmitOnErrorsPlugin()]
   }
 
   return webpackConfig
