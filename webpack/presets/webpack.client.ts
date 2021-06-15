@@ -2,14 +2,20 @@
 import { Configuration } from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import WebpackBar from 'webpackbar'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+
+const isAnalyze = Boolean(process.env.ANALYZE)
 
 const webpackClientConfig: (args: { mode: string }) => Configuration = ({ mode }) => {
-  const isProduction = mode === 'production'
+  const isProductionMode = mode === 'production'
   const title = 'ContentPI'
 
   const webpackConfig: Configuration = {
     entry: {
       main: './src/client/index.tsx'
+    },
+    output: {
+      publicPath: `http://localhost:3001/`
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -24,17 +30,21 @@ const webpackClientConfig: (args: { mode: string }) => Configuration = ({ mode }
     ]
   }
 
-  if (isProduction) {
+  if (isProductionMode) {
     webpackConfig.output = {
       filename: '[name].js',
-      chunkFilename: '[name].js'
+      chunkFilename: '[name].js',
+      publicPath: '/'
     }
+  }
 
-    webpackConfig.plugins = [...(webpackConfig.plugins || [])]
-  } else {
-    webpackConfig.output = {
-      publicPath: `http://localhost:3001/`
-    }
+  if (isAnalyze) {
+    webpackConfig.plugins = [
+      ...(webpackConfig.plugins || []),
+      new BundleAnalyzerPlugin({
+        analyzerPort: 9001
+      })
+    ]
   }
 
   return webpackConfig

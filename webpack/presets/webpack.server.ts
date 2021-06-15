@@ -4,6 +4,9 @@ import WebpackBar from 'webpackbar'
 import { Configuration, optimize, IgnorePlugin } from 'webpack'
 import { resolve } from 'path'
 import { RunScriptWebpackPlugin } from 'run-script-webpack-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+
+const isAnalyze = Boolean(process.env.ANALYZE)
 
 const webpackServerConfig: (args: { mode: string }) => Configuration = ({ mode }) => {
   const isDevelopment = mode === 'development'
@@ -52,6 +55,15 @@ const webpackServerConfig: (args: { mode: string }) => Configuration = ({ mode }
     webpackConfig.externals = [
       nodeExternals({
         allowlist: ['webpack/hot/poll?300']
+      })
+    ]
+  }
+
+  if (isAnalyze) {
+    webpackConfig.plugins = [
+      ...(webpackConfig.plugins || []),
+      new BundleAnalyzerPlugin({
+        analyzerPort: 9002
       })
     ]
   }
