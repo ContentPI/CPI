@@ -12,12 +12,8 @@ const App = () => {
     <Router>
       <GlobalStyles />
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/:language/login" component={Login} />
       </Switch>
     </Router>
   )

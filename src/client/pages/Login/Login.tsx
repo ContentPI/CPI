@@ -1,11 +1,27 @@
 // Dependencies
-import React from 'react'
+import React, { FC } from 'react'
 import { Text, Input, Button } from '@contentpi/ui-kit'
+
+// Config
+import * as config from '~/config'
 
 // Styles
 import { LoginCard, LoginContainer, LoginForm, InputControl } from './Login.styled'
 
-const Login = () => {
+type Props = {
+  match: {
+    params: {
+      language: config.Languages
+    }
+  }
+}
+
+const Login: FC<Props> = ({
+  match: {
+    params: { language = config.languages.default }
+  }
+}) => {
+  console.log({ language })
   return (
     <LoginContainer>
       <LoginCard>

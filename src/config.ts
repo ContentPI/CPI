@@ -17,7 +17,7 @@ type Session = {
   httpOnly: boolean
 }
 
-type Languages = {
+export type Languages = {
   default: 'ar' | 'es-MX' | 'en-US' | 'ja-JP' | 'pt-BR' | 'fr-FR' | 'ru-RU' | 'it-IT' | 'de-DE'
   list: ['ar', 'es-MX', 'en-US', 'ja-JP', 'pt-BR', 'fr-FR', 'ru-RU', 'it-IT', 'de-DE']
 }
