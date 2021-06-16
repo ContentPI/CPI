@@ -6,6 +6,7 @@ import { GlobalStyles } from '@contentpi/ui-kit'
 // Pages
 import Home from '../Home'
 import Login from '../Login'
+import Dashboard from '../Dashboard'
 import PageNotFound from '../PageNotFound'
 
 const App = () => {
@@ -14,6 +15,8 @@ const App = () => {
       <GlobalStyles />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/:language/" component={Home} />
+        <Route exact path="/:language/dashboard" component={Dashboard} />
         <Route exact path="/:language/login" component={Login} />
         <Route component={PageNotFound} />
       </Switch>

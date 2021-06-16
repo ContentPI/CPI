@@ -2,15 +2,15 @@
 import serialize from 'serialize-javascript'
 
 // Config
-import { publicPath } from '~/config'
+import * as config from '~/config'
 
 type HTMLMetaData = {
-  title: string
+  title?: string
   initialState?: any
 }
 
 const html = (options: HTMLMetaData) => {
-  const { title, initialState = {} } = options
+  const { title = config.page.title, initialState = {} } = options
 
   return `
     <!DOCTYPE html>
@@ -18,8 +18,8 @@ const html = (options: HTMLMetaData) => {
       <head>
         <meta charset="utf-8">
         <title>${title}</title>
-        <script defer="" src="${publicPath}vendor.js"></script>
-        <script defer="" src="${publicPath}main.js"></script>
+        <script defer="" src="${config.publicPath}vendor.js"></script>
+        <script defer="" src="${config.publicPath}main.js"></script>
       </head>
       <body>
         <div id="root"></div>

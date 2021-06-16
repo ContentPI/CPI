@@ -17,6 +17,10 @@ type Session = {
   httpOnly: boolean
 }
 
+type Page = {
+  title: string
+}
+
 export type Languages = {
   default: 'ar' | 'es-MX' | 'en-US' | 'ja-JP' | 'pt-BR' | 'fr-FR' | 'ru-RU' | 'it-IT' | 'de-DE'
   list: ['ar', 'es-MX', 'en-US', 'ja-JP', 'pt-BR', 'fr-FR', 'ru-RU', 'it-IT', 'de-DE']
@@ -63,4 +67,9 @@ export const session: Session = {
 export const languages: Languages = {
   default: 'en-US',
   list: ['ar', 'es-MX', 'en-US', 'ja-JP', 'pt-BR', 'fr-FR', 'ru-RU', 'it-IT', 'de-DE']
+}
+
+// Page Configuration
+export const page: Page = {
+  title: 'ContentPI'
 }

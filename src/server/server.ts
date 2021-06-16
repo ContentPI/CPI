@@ -67,6 +67,33 @@ app.get(`/logout`, (req: Request, res: Response) => {
   res.redirect(redirect)
 })
 
+app.use(
+  `/:language(${availableLanguages()})/dashboard/:appId?/:stage?/:moduleName?/:section?/:model?`,
+  isConnected(
+    true,
+    ['owner', 'admin', 'editor'],
+    `/${config.languages.default}/login?redirectTo=/dashboard`
+  ),
+  (req: Request, res: Response) => {
+    const { appId, stage, language = config.languages.default } = req.params
+    const entryId = req.query.entryId ? String(req.query.entryId) : ''
+
+    res.send(html({ initialState: { language, stage, appId, entryId } }))
+  }
+)
+
+app.get(
+  '/dashboard',
+  isConnected(
+    true,
+    ['owner', 'admin', 'editor'],
+    `/${config.languages.default}/login?redirectTo=/dashboard`
+  ),
+  (req: Request, res: Response) => {
+    res.redirect(`${config.languages.default}/dashboard`)
+  }
+)
+
 app.get('*', (req: Request, res: Response) => {
   res.send(html({ title: 'ContentPI' }))
 })
