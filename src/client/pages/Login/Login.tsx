@@ -58,7 +58,12 @@ const Login: FC<Props> = ({ currentUrl }) => {
   return (
     <>
       <RenderIf isTrue={invalidLogin && errorMessage !== ''}>
-        <Notification message={errorMessage} type="error" />
+        <Notification
+          message={errorMessage}
+          type="error"
+          position="bottom-right"
+          duration={1000000}
+        />
       </RenderIf>
       <StyledLoginContainer>
         <StyledLoginCard>
