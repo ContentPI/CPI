@@ -1,6 +1,6 @@
 // Dependencies
 import { Configuration } from 'webpack'
-import { resolve, join } from 'path'
+import { resolve } from 'path'
 import createStyledComponentsTransformer from 'typescript-plugin-styled-components'
 import Dotenv from 'dotenv-webpack'
 import CopyPlugin from 'copy-webpack-plugin'
