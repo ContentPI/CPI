@@ -1,6 +1,6 @@
 // Dependencies
 import React, { FC, useState, useContext } from 'react'
-import { Text, Input, Button, RenderIf } from '@contentpi/ui-kit'
+import { Text, Input, Button, RenderIf, Notification } from '@contentpi/ui-kit'
 import { redirectTo } from '@contentpi/lib'
 
 // Contexts
@@ -12,7 +12,13 @@ import { UserContext } from '~/client/contexts/user'
 import { IUser } from '~/client/types'
 
 // Styles
-import { LoginCard, LoginContainer, LoginForm, InputControl } from './Login.styled'
+import {
+  StyledLoginCard,
+  StyledLoginContainer,
+  StyledLoginForm,
+  StyledInputControl,
+  StyledButtons
+} from './Login.styled'
 
 type Props = {
   login(input: any): any
@@ -51,19 +57,19 @@ const Login: FC<Props> = ({ currentUrl }) => {
 
   return (
     <>
-      <RenderIf isTrue={invalidLogin}>
-        <p>{errorMessage}</p>
+      <RenderIf isTrue={invalidLogin && errorMessage !== ''}>
+        <Notification message={errorMessage} type="error" />
       </RenderIf>
-      <LoginContainer>
-        <LoginCard>
+      <StyledLoginContainer>
+        <StyledLoginCard>
           <Text color="secondary" align="center" variant="h1">
             Welcome Back
           </Text>
           <Text color="hint" align="center" variant="caption1">
             Sign in to your account
           </Text>
-          <LoginForm>
-            <InputControl>
+          <StyledLoginForm>
+            <StyledInputControl>
               <Text color="secondary">Email</Text>
               <Input
                 placeholder={t('Email')}
@@ -73,8 +79,8 @@ const Login: FC<Props> = ({ currentUrl }) => {
                 onChange={_onChange}
                 value={values.email}
               />
-            </InputControl>
-            <InputControl>
+            </StyledInputControl>
+            <StyledInputControl>
               <Text color="secondary">Password</Text>
               <Input
                 placeholder={t('Password')}
@@ -84,13 +90,16 @@ const Login: FC<Props> = ({ currentUrl }) => {
                 onChange={_onChange}
                 value={values.password}
               />
-            </InputControl>
-          </LoginForm>
-          <Button fullWidth onClick={(): Promise<void> => handleSubmit(values)}>
-            {t('Login')}
-          </Button>
-        </LoginCard>
-      </LoginContainer>
+            </StyledInputControl>
+          </StyledLoginForm>
+
+          <StyledButtons>
+            <Button fullWidth onClick={(): Promise<void> => handleSubmit(values)}>
+              {t('Login')}
+            </Button>
+          </StyledButtons>
+        </StyledLoginCard>
+      </StyledLoginContainer>
     </>
   )
 }

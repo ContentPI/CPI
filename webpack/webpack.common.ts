@@ -1,8 +1,9 @@
 // Dependencies
 import { Configuration } from 'webpack'
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 import createStyledComponentsTransformer from 'typescript-plugin-styled-components'
 import Dotenv from 'dotenv-webpack'
+import CopyPlugin from 'copy-webpack-plugin'
 
 const styledComponentsTransformer = createStyledComponentsTransformer()
 
@@ -37,6 +38,12 @@ const webpackCommonConfig: () => Configuration = () => {
     module: {
       rules: [
         {
+          test: /\.(woff|woff2)$/,
+          use: {
+            loader: 'url-loader'
+          }
+        },
+        {
           test: /\.(ts|tsx)$/,
           exclude: /node_modules/,
           use: [
@@ -53,7 +60,12 @@ const webpackCommonConfig: () => Configuration = () => {
         }
       ]
     },
-    plugins: [new Dotenv()]
+    plugins: [
+      new Dotenv(),
+      new CopyPlugin({
+        patterns: [{ from: 'node_modules/@contentpi/ui-kit/dist/fonts', to: '../dist/fonts' }]
+      })
+    ]
   }
 
   return webpackConfig

@@ -10,8 +10,7 @@ const loginCardStyles = `
   background: ${themeCssVars.global?.background.paper}
 `
 
-export const LoginContainer = styled.div`
-  font-family: -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+export const StyledLoginContainer = styled.div`
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -19,22 +18,25 @@ export const LoginContainer = styled.div`
   ${loginContainerStyles}
 `
 
-export const LoginCard = styled.div`
-  max-width: 404px;
-  height: 320px;
+export const StyledLoginCard = styled.div`
   margin: auto;
   border-radius: 5px;
-  padding: 4rem;
+  padding: 3rem;
   ${loginCardStyles}
 `
 
-export const LoginForm = styled.div`
+export const StyledLoginForm = styled.div`
   margin-bottom: 1.5rem;
 `
 
-export const InputControl = styled.div`
+export const StyledInputControl = styled.div`
   margin-top: 1.5rem;
   & > p {
     padding-bottom: 0.5rem;
   }
+`
+
+export const StyledButtons = styled.div`
+  margin: 0 auto;
+  text-align: center;
 `
