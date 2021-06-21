@@ -74,15 +74,15 @@ const Login: FC<Props> = ({ currentUrl }) => {
       </RenderIf>
       <StyledLoginContainer>
         <StyledLoginCard>
-          <Text color="secondary" align="center" variant="h1">
-            Welcome Back
+          <Text color="textSecondary" align="center" variant="h1">
+            {t('Welcome Back')}
           </Text>
-          <Text color="hint" align="center" variant="caption1">
-            Sign in to your account
+          <Text color="textHint" align="center" variant="caption1">
+            {t('Sign in to your account')}
           </Text>
           <StyledLoginForm>
             <StyledInputControl>
-              <Text color="secondary">Email</Text>
+              <Text color="textSecondary">{t('Email')}</Text>
               <Input
                 placeholder={t('Email')}
                 autoComplete="off"
@@ -93,7 +93,7 @@ const Login: FC<Props> = ({ currentUrl }) => {
               />
             </StyledInputControl>
             <StyledInputControl>
-              <Text color="secondary">Password</Text>
+              <Text color="textSecondary">{t('Password')}</Text>
               <Input
                 placeholder={t('Password')}
                 type="password"

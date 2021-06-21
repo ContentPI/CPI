@@ -24,3 +24,5 @@ dist/
 coverage
 
 .env
+
+/src/static/i18n/*.json

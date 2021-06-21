@@ -21,9 +21,21 @@ type Page = {
   title: string
 }
 
+export type LanguageList =
+  | 'ar'
+  | 'es-MX'
+  | 'en-US'
+  | 'ja-JP'
+  | 'pt-BR'
+  | 'fr-FR'
+  | 'ru-RU'
+  | 'it-IT'
+  | 'de-DE'
+  | string
+
 export type Languages = {
-  default: 'ar' | 'es-MX' | 'en-US' | 'ja-JP' | 'pt-BR' | 'fr-FR' | 'ru-RU' | 'it-IT' | 'de-DE'
-  list: ['ar', 'es-MX', 'en-US', 'ja-JP', 'pt-BR', 'fr-FR', 'ru-RU', 'it-IT', 'de-DE']
+  default: LanguageList
+  list: LanguageList[]
 }
 
 // Environment Configuration
