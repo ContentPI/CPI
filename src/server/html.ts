@@ -18,6 +18,8 @@ const html = (options: HTMLMetaData) => {
       <head>
         <meta charset="utf-8">
         <title>${title}</title>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
         <script defer="" src="${config.publicPath}vendor.js"></script>
         <script defer="" src="${config.publicPath}main.js"></script>
       </head>

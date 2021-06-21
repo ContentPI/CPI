@@ -31,7 +31,10 @@ const Login: FC<Props> = ({ currentUrl }) => {
     email: '',
     password: ''
   })
-  const [errorMessage, setErrorMessage] = useState('')
+  const [notification, setNotification] = useState({
+    id: Math.random(),
+    message: ''
+  })
   const [invalidLogin, setInvalidLogin] = useState(false)
 
   // Contexts
@@ -49,7 +52,10 @@ const Login: FC<Props> = ({ currentUrl }) => {
 
     if (response.error) {
       setInvalidLogin(true)
-      setErrorMessage(response.message)
+      setNotification({
+        id: Math.random(),
+        message: response.message
+      })
     } else {
       redirectTo(currentUrl || '/', true)
     }
@@ -57,12 +63,13 @@ const Login: FC<Props> = ({ currentUrl }) => {
 
   return (
     <>
-      <RenderIf isTrue={invalidLogin && errorMessage !== ''}>
+      <RenderIf isTrue={invalidLogin && notification.message !== ''}>
         <Notification
-          message={errorMessage}
-          type="error"
-          position="bottom-right"
-          duration={1000000}
+          notification={notification}
+          type="info"
+          position="top-right"
+          maxNotifications={3}
+          duration={5000}
         />
       </RenderIf>
       <StyledLoginContainer>
