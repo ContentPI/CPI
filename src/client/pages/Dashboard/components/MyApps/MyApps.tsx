@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 import { Text } from '@contentpi/ui-kit'
 
@@ -9,21 +9,28 @@ import {
   StyledAppsMain,
   StyledAppsCard,
   StyledAppsCardLogo
-} from './Apps.styled'
+} from './MyApps.styled'
 
-const Item = () => {
+type App = {
+  appName: string
+  identifier: string
+  icon: string
+  description: string
+}
+
+const Item: FC<App> = ({ appName, identifier, icon, description }) => {
   return (
     <StyledAppsCard>
-      <StyledAppsCardLogo>B</StyledAppsCardLogo>
+      <StyledAppsCardLogo style={{ backgroundColor: icon }}>{appName.charAt(0)}</StyledAppsCardLogo>
       <Text color="textPrimary" variant="h6">
-        Sports interactive
+        {appName}
       </Text>
       <Text color="textSecondary" variant="caption1">
-        Standar plan
+        #{identifier}
       </Text>
       <br />
       <Text color="textSecondary" variant="caption1">
-        Web resource which contains all about transfers in the world of sports
+        {description}
       </Text>
       <br />
       <Text color="textPrimary" variant="caption1">
@@ -47,7 +54,11 @@ const NewItem = () => {
   )
 }
 
-const Apps = () => {
+type Props = {
+  data: any
+}
+
+const MyApps: FC<Props> = ({ data }) => {
   return (
     <StyledAppsContainer>
       <StyledAppsContent>
@@ -61,18 +72,12 @@ const Apps = () => {
           </Text>
         </StyledAppsHead>
         <StyledAppsMain>
+          {data && data.map((app: any) => <Item key={app.id} {...app} />)}
           <NewItem />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Item />
         </StyledAppsMain>
       </StyledAppsContent>
     </StyledAppsContainer>
   )
 }
 
-export default Apps
+export default MyApps

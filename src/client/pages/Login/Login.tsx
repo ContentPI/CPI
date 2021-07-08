@@ -66,10 +66,10 @@ const Login: FC<Props> = ({ currentUrl }) => {
       <RenderIf isTrue={invalidLogin && notification.message !== ''}>
         <Notification
           notification={notification}
-          type="info"
-          position="top-right"
-          maxNotifications={3}
-          duration={5000}
+          type="error"
+          position="bottom-right"
+          maxNotifications={5}
+          duration={5}
         />
       </RenderIf>
       <StyledLoginContainer>
