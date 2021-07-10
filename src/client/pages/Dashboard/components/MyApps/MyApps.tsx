@@ -1,6 +1,6 @@
+// Dependencies
 import React, { FC } from 'react'
-
-import { Text } from '@contentpi/ui-kit'
+import { Text, Link } from '@contentpi/ui-kit'
 
 import {
   StyledAppsContainer,
@@ -12,31 +12,36 @@ import {
 } from './MyApps.styled'
 
 type App = {
+  id: string
   appName: string
   identifier: string
   icon: string
   description: string
 }
 
-const Item: FC<App> = ({ appName, identifier, icon, description }) => {
+const Item: FC<App> = ({ id, appName, identifier, icon, description }) => {
   return (
-    <StyledAppsCard>
-      <StyledAppsCardLogo style={{ backgroundColor: icon }}>{appName.charAt(0)}</StyledAppsCardLogo>
-      <Text color="textPrimary" variant="h6">
-        {appName}
-      </Text>
-      <Text color="textSecondary" variant="caption1">
-        #{identifier}
-      </Text>
-      <br />
-      <Text color="textSecondary" variant="caption1">
-        {description}
-      </Text>
-      <br />
-      <Text color="textPrimary" variant="caption1">
-        2 days left
-      </Text>
-    </StyledAppsCard>
+    <Link to={`dashboard/${id}/master`}>
+      <StyledAppsCard>
+        <StyledAppsCardLogo style={{ backgroundColor: icon }}>
+          {appName.charAt(0)}
+        </StyledAppsCardLogo>
+        <Text color="textPrimary" variant="h6">
+          {appName}
+        </Text>
+        <Text color="textSecondary" variant="caption1">
+          #{identifier}
+        </Text>
+        <br />
+        <Text color="textSecondary" variant="caption1">
+          {description}
+        </Text>
+        <br />
+        <Text color="textPrimary" variant="caption1">
+          2 days left
+        </Text>
+      </StyledAppsCard>
+    </Link>
   )
 }
 

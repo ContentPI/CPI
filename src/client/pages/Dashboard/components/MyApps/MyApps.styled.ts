@@ -25,22 +25,31 @@ export const StyledAppsContent = styled.div`
   min-height: 100vh;
   margin: 0 auto;
 `
+
 export const StyledAppsHead = styled.div`
   max-width: 400px;
   margin: 0 auto 32px;
   padding-top: 32px;
 `
+
 export const StyledAppsMain = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
 `
+
 export const StyledAppsCard = styled.div`
-  width: 228px;
+  cursor: pointer;
   border-radius: 8px;
+  border: 2px solid transparent;
   margin-bottom: 10px;
   padding: 16px;
+  width: 228px;
   ${appsCardStyles}
+
+  &:hover {
+    border: 2px solid #222;
+  }
 
   &.new {
     display: flex;
@@ -48,6 +57,10 @@ export const StyledAppsCard = styled.div`
     justify-content: center;
     align-items: center;
     border: 2px dashed #222;
+
+    &:hover {
+      border: 2px solid #222;
+    }
   }
 `
 export const StyledAppsCardLogo = styled.div`

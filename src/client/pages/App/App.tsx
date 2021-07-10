@@ -6,8 +6,8 @@ import { GlobalStyles } from '@contentpi/ui-kit'
 // Pages
 import Home from '../Home'
 import Login from '../Login'
-import Dashboard from '../Dashboard'
 import MyApps from '../Dashboard/components/MyApps'
+import DashboardHome from '../Dashboard/components/Home'
 import PageNotFound from '../PageNotFound'
 
 const App = () => {
@@ -17,6 +17,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/:language/" component={Home} />
+        <Route exact path="/:language/dashboard/:appId/:stage" component={DashboardHome} />
         <Route exact path="/:language/dashboard" component={MyApps} />
         <Route exact path="/:language/login" component={Login} />
         <Route component={PageNotFound} />
