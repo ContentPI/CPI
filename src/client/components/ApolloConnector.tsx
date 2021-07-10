@@ -1,5 +1,5 @@
 // Dependencies
-import React, { FC, ReactElement, useContext, useCallback } from 'react'
+import React, { FC, ReactElement } from 'react'
 import { useQuery, DocumentNode, QueryResult, OperationVariables } from '@apollo/client'
 
 type ApolloConnectorProps = {
